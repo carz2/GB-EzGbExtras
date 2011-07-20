@@ -21,7 +21,7 @@
  */
 -->
 <resources>
-    <string name="app_name">EzGingerbread Extras</string>
+    <string name="app_name">DietGingerbread Settings</string>
     <string name="displayparts">Display Adv. Parts:</string>
     <string name="spareparts">Spare Parts:</string>
 
