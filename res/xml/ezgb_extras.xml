@@ -32,4 +32,41 @@
                 android:targetClass="name.devnull.ezgb.extras.activities.UIPowerWidgetActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/spareparts">
+        <ListPreference
+                android:key="window_animations"
+                android:title="@string/title_window_animations"
+                android:summary="@string/summary_window_animations"
+                android:entries="@array/entries_animations"
+                android:entryValues="@array/entryvalues_animations"
+                android:dialogTitle="@string/dialog_title_window_animations" />
+
+        <ListPreference
+                android:key="transition_animations"
+                android:title="@string/title_transition_animations"
+                android:summary="@string/summary_transition_animations"
+                android:entries="@array/entries_animations"
+                android:entryValues="@array/entryvalues_animations"
+                android:dialogTitle="@string/dialog_title_transition_animations" />
+        <ListPreference
+                android:key="end_button"
+                android:title="@string/title_end_button"
+                android:summary="@string/summary_end_button"
+                android:entries="@array/entries_end_button"
+                android:entryValues="@array/entryvalues_end_button"
+                android:dialogTitle="@string/dialog_title_end_button" />
+
+        <CheckBoxPreference 
+            android:key="haptic_feedback" 
+            android:title="@string/title_haptic_feedback" 
+            android:summaryOn="@string/summary_on_haptic_feedback"
+            android:summaryOff="@string/summary_off_haptic_feedback"/>
+
+        <CheckBoxPreference
+                android:key="compatibility_mode"
+                android:title="@string/compatibility_mode_title"
+                android:summaryOn="@string/compatibility_mode_summary_on"
+                android:summaryOff="@string/compatibility_mode_summary_off" />
+    </PreferenceCategory>
 </PreferenceScreen>
