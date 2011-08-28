@@ -21,8 +21,23 @@
  */
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/cpu_settings_title">
+
+        <PreferenceScreen
+            android:key="cpu_settings"
+            android:title="@string/cpu_title"
+            android:summary="@string/cpu_summary">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="name.devnull.ezgb.extras"
+                android:targetClass="name.devnull.ezgb.extras.activities.CPUActivity" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:title="@string/displayparts">
+
         <PreferenceScreen
             android:key="ui_power_widget_settings_menu"
             android:title="@string/title_expanded_widget"
@@ -32,8 +47,10 @@
                 android:targetClass="name.devnull.ezgb.extras.activities.UIPowerWidgetActivity" />
         </PreferenceScreen>
     </PreferenceCategory>
+
     <PreferenceCategory
         android:title="@string/spareparts">
+
         <ListPreference
                 android:key="window_animations"
                 android:title="@string/title_window_animations"
@@ -49,6 +66,7 @@
                 android:entries="@array/entries_animations"
                 android:entryValues="@array/entryvalues_animations"
                 android:dialogTitle="@string/dialog_title_transition_animations" />
+
         <ListPreference
                 android:key="end_button"
                 android:title="@string/title_end_button"
