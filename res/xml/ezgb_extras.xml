@@ -33,6 +33,9 @@
                 android:targetPackage="name.devnull.ezgb.extras"
                 android:targetClass="name.devnull.ezgb.extras.activities.CPUActivity" />
         </PreferenceScreen>
+
+    <CheckBoxPreference android:key="pref_jit_mode"
+        android:title="@string/pref_jit_mode_title" android:summary="@string/pref_jit_mode_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory

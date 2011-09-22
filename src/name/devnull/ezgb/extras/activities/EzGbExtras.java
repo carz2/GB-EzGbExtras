@@ -32,6 +32,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -53,6 +54,12 @@ public class EzGbExtras extends PreferenceActivity
         SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = "EzGbExtras";
 
+    private static final String JIT_PREF = "pref_jit_mode";
+    private static final String JIT_ENABLED = "int:jit";
+    private static final String JIT_DISABLED = "int:fast";
+    private static final String JIT_PERSIST_PROP = "persist.sys.jit-mode";
+    private static final String JIT_PROP = "dalvik.vm.execution-mode";
+
     private static final String WINDOW_ANIMATIONS_PREF = "window_animations";
     private static final String TRANSITION_ANIMATIONS_PREF = "transition_animations";
     private static final String HAPTIC_FEEDBACK_PREF = "haptic_feedback";
@@ -67,6 +74,7 @@ public class EzGbExtras extends PreferenceActivity
     private CheckBoxPreference mHapticFeedbackPref;
     private ListPreference mEndButtonPref;
     private CheckBoxPreference mCompatibilityMode;
+    private CheckBoxPreference mJitPref;
 
     private IWindowManager mWindowManager;
 
@@ -90,6 +98,10 @@ public class EzGbExtras extends PreferenceActivity
         mCompatibilityMode.setPersistent(false);
         mCompatibilityMode.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.COMPATIBILITY_MODE, 1) != 0);
+        mJitPref = (CheckBoxPreference) prefSet.findPreference(JIT_PREF);
+        String jitMode = SystemProperties.get(JIT_PERSIST_PROP,
+                SystemProperties.get(JIT_PROP, JIT_ENABLED));
+        mJitPref.setChecked(JIT_ENABLED.equals(jitMode));
 
         mWindowManager = IWindowManager.Stub.asInterface(ServiceManager.getService("window"));
 
@@ -116,6 +128,12 @@ public class EzGbExtras extends PreferenceActivity
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+	if (preference == mJitPref) {
+            SystemProperties.set(JIT_PERSIST_PROP,
+                    mJitPref.isChecked() ? JIT_ENABLED : JIT_DISABLED);
+            return true;
+        }
+
         if (preference == mCompatibilityMode) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.COMPATIBILITY_MODE,

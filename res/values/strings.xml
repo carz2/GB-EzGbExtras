@@ -25,8 +25,8 @@
     <string name="displayparts">Notification Widget:</string>
     <string name="spareparts">Spare Parts:</string>
 
-    <!-- CPU Settings strings -->
-    <string name="cpu_settings_title">CPU settings</string>
+    <!-- Performance Settings strings -->
+    <string name="cpu_settings_title">Performance settings</string>
     <string name="cpu_title">CPU settings</string>
     <string name="cpu_summary">Governor and clock settings</string>
     <string name="cpu_governors_title">Available governors</string>
@@ -37,6 +37,9 @@
     <string name="cpu_max_freq_summary">Maximum CPU frequency\nCurrently: %s</string>
     <string name="cpu_set_on_boot">Set on boot</string>
     <string name="cpu_set_on_boot_summary">Restore CPU settings on boot</string>
+
+    <string name="pref_jit_mode_title">Use JIT</string>
+    <string name="pref_jit_mode_summary">Use the Dalvik just-in-time compiler (requires reboot)</string>
 
     <!--Begin Spare Parts strings-->
      <string name="title_window_animations">Window animations</string>
